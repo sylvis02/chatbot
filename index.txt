@@ -1,0 +1,28 @@
+// // Start writing Firebase Functions
+// // https://firebase.google.com/docs/functions/typescript
+//
+//export const helloWorld = functions.https.onRequest((request, response) => {
+  //  functions.logger.info("Hello logs!", { structuredData: true });
+    //response.send("Hello from Firebase!");
+//});
+
+import express  from "express";
+import functions from 'firebase-functions';
+import {dialogRoute} from "./functions/src/route/dialog.route"
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  app.use(dialogRoute);
+//export const callMain = functions.https.onRequest(app);
+export const helloWorld = functions.https.onRequest((request, response) => {
+    functions.logger.info("Hello logs!", { structuredData: true });
+    response.send("Hello from Firebase!");
+});
+
+
+
+
+
